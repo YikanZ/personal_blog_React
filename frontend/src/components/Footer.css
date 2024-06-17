@@ -1,0 +1,58 @@
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer p {
+  margin: 0.5rem 0;
+}
+
+.footer-nav {
+  margin: 1rem 0;
+}
+
+.footer-nav a {
+  color: white;
+  margin: 0 0.5rem;
+  text-decoration: none;
+}
+
+.footer-nav a:hover {
+  text-decoration: underline;
+}
+
+.newsletter-form {
+  margin-top: 1rem;
+}
+
+.newsletter-form label {
+  margin-right: 0.5rem;
+}
+
+.newsletter-form input {
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.newsletter-form button {
+  padding: 0.5rem 1rem;
+  background-color: #555;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.newsletter-form button:hover {
+  background-color: #777;
+}

@@ -2,10 +2,10 @@ import React from 'react';
 
 const About = () => {
   return (
-    <div>
+    <section id="about">
       <h1>About Me</h1>
-      <p>My name is Yikan, and I am a computer science enthusiast with a background in civil engineering.</p>
-    </div>
+      <p>This is the about section.</p>
+    </section>
   );
 };
 
