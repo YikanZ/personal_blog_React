@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ token, setToken }) => {
   const [activeLink, setActiveLink] = useState('/');
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    setToken(null);
+    localStorage.removeItem('token'); // Remove token from local storage
+    navigate('/');
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,7 +43,7 @@ const Navbar = () => {
           <Link to="/" className={activeLink === '/' ? 'active' : ''}>Home</Link>
         </li>
         <li className="navbar-item">
-          <Link to="/about" className={activeLink === '/about' ? 'active' : ''}>About</Link>
+          <Link to="/goals" className={activeLink === '/goals' ? 'active' : ''}>Goals</Link>
         </li>
         <li className="navbar-item">
           <Link to="/projects" className={activeLink === '/projects' ? 'active' : ''}>Projects</Link>
@@ -44,6 +51,15 @@ const Navbar = () => {
         <li className="navbar-item">
           <Link to="/contact" className={activeLink === '/contact' ? 'active' : ''}>Contact</Link>
         </li>
+        {token ? (
+          <li className="navbar-item login-tab">
+            <button onClick={handleLogout} className="logout-button">Logout</button>
+          </li>
+        ) : (
+          <li className="navbar-item login-tab">
+            <Link to="/login">Login (Only For Yikan)</Link>
+          </li>
+        )}
       </ul>
     </nav>
   );

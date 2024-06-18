@@ -43,11 +43,11 @@
   }
   
   .bio-block {
-    background-color: #B4D1F0;
+    background-color: RGB(234,224,200);
     width: 40%; /* Make the block narrower */
     padding: 1rem;
     box-sizing: border-box;
-    border: 2px solid #B4D1F0;
+    border: 2px solid RGB(234,224,200);
     text-align: left;
   }
   
@@ -74,10 +74,10 @@
   }
   
   .skills-block {
-    background-color: lightblue;
+    background-color: RGB(234,224,200);
     padding: 1rem;
     box-sizing: border-box;
-    border: 2px solid lightblue;
+    border: 2px solid RGB(234,224,200);
     text-align: center;
     width: 100%;
   }

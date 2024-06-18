@@ -1,30 +1,46 @@
 .navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: #333;
   padding: 1rem;
 }
 
 .navbar-list {
-  list-style: none;
   display: flex;
-  justify-content: space-around;
-  margin: 0;
+  justify-content: space-around; /* Use space-around to spread the items evenly */
+  list-style: none;
+  width: 100%; /* Ensure the list takes the full width of the navbar */
   padding: 0;
+  margin: 0;
 }
 
 .navbar-item {
-  margin: 0;
+  flex: 1; /* Make each item take up equal space */
+  text-align: center; /* Center-align text within each item */
 }
 
-.navbar-item a {
+.navbar-item a,
+.navbar-item button {
   color: white;
   text-decoration: none;
-  padding: 0.5rem 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-.navbar-item a:hover,
-.navbar-item a.active {
-  background-color: #555;
+.navbar-item button.logout-button {
+  color: white;
+  background-color: #f44336;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.navbar-item button.logout-button:hover {
+  background-color: #d32f2f;
+}
+
+.navbar-item .active {
+  font-weight: bold;
 }

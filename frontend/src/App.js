@@ -1,28 +1,36 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
-import About from './pages/About';
+import Goals from './pages/Goals';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
-import Footer from './components/Footer';
+import Login from './pages/Login';
+import Navbar from './components/Navbar';
+import AddGoal from './pages/AddGoal';
 
+const App = () => {
+  const [token, setToken] = useState(localStorage.getItem('token'));
 
+  useEffect(() => {
+    if (token) {
+      localStorage.setItem('token', token);
+    }
+  }, [token]);
 
-function App() {
-  console.log('App.js');
   return (
     <Router>
-      <Navbar />
+      <Navbar token={token} setToken={setToken} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/goals" element={<Goals />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login setToken={setToken} />} />
+        {token && <Route path="/add-goal" element={<AddGoal />} />}
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-      <Footer />
     </Router>
   );
-}
+};
 
 export default App;

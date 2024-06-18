@@ -2,23 +2,34 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const { authenticateJWT, login } = require('./auth');
+
+
+
 
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get('/api/projects', (req, res) => {
-    const projects = [
-        { id: 1, name: 'Project 1', description: 'This is project 1' },
-        { id: 2, name: 'Project 2', description: 'This is project 2' },
-        { id: 3, name: 'Project 3', description: 'This is project 3' }
-    ];
-    res.json(projects);
+const goals = [];
+app.post('/login', login);
+
+app.get('/goals', (req, res) => {
+    res.json(goals);
 });
+
+app.post('/goals', authenticateJWT, (req, res) => {
+    const goal = req.body;
+    goals.push(goal);
+    res.status(201).json(goal);
+});
+
+
+
 
 app.post('/api/contact', (req, res) => {
     const { name, email, message } = req.body;
@@ -29,4 +40,6 @@ app.post('/api/contact', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
     });
+
+
 

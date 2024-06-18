@@ -9,7 +9,7 @@ const Footer = () => {
         <p>© 2024 Yikan. All Rights Reserved.</p>
         <nav className="footer-nav">
           <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
+          <Link to="/goals">Goals</Link>
           <Link to="/projects">Projects</Link>
           <Link to="/contact">Contact</Link>
         </nav>
