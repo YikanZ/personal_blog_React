@@ -1,0 +1,109 @@
+.goals-container {
+  padding: 2rem;
+}
+
+.goals-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-goal-button-container {
+  position: relative;
+}
+
+.add-goal-button {
+  display: inline-block;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  font-size: 2rem; /* Increased size */
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.goal-item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 0.5fr 0.5fr;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.goal-item.header {
+  font-weight: bold;
+}
+
+.goal-item .goal-text,
+.goal-item .goal-time,
+.goal-item .goal-status {
+  text-align: center;
+}
+
+.goal-item .goal-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.goal-item .goal-status input[type="radio"] {
+  margin: 0 0.9rem;
+}
+
+.goal-item .goal-status .green-radio {
+  accent-color: green;
+}
+
+.goal-item .goal-status .red-radio {
+  accent-color: red;
+}
+
+.edit-button,
+.delete-button {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  color: #0056b3;
+}
+
+.status-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.status-legend div {
+  display: flex;
+  align-items: center;
+  margin: 0 1rem;
+}
+.status-dot {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  margin-left: 0.5rem; /* Added margin-left to move the dot to the right */
+}
+
+.status-dot.completed {
+  background-color: green;
+}
+
+.status-dot.ongoing {
+  background-color: red;
+}
+

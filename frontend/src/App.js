@@ -22,11 +22,11 @@ const App = () => {
       <Navbar token={token} setToken={setToken} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/goals" element={<Goals />} />
+        <Route path="/goals" element={<Goals token={token} />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login setToken={setToken} />} />
-        {token && <Route path="/add-goal" element={<AddGoal />} />}
+        {token && <Route path="/add-goal" element={<AddGoal token={token} />} />}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>

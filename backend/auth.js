@@ -24,24 +24,28 @@ const login = (req, res) => {
     return res.status(400).json({ message: 'PewPew, You are not Yikan' });
   }
 
-  const token = jwt.sign({ username: user.username }, secret, { expiresIn: '1h' });
+  const token = jwt.sign({ username: user.username }, secret, { expiresIn: '1000h' });
 
   res.json({ token, message: 'Welcome back Yikan' });
 };
 
 const authenticateJWT = (req, res, next) => {
-  const token = req.header('Authorization');
+  const authHeader = req.headers.authorization;
 
-  if (!token) {
-    return res.status(401).json({ message: 'Access denied, no token provided' });
-  }
+  if (authHeader) {
+    const token = authHeader.split(' ')[1];
 
-  try {
-    const decoded = jwt.verify(token, secret);
-    req.user = decoded;
-    next();
-  } catch (ex) {
-    res.status(400).json({ message: 'Invalid token' });
+    // Token verification using secret
+    jwt.verify(token, secret, (err, user) => {
+      if (err) {
+        return res.status(403).json({ message: 'Invalid token' });
+      }
+
+      req.user = user;
+      next();
+    });
+  } else {
+    res.status(401).json({ message: 'No token provided' });
   }
 };
 
